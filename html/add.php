@@ -1,6 +1,6 @@
 <?php
 /*
- * 管理画面・お知らせ記事追加
+ * スタッフ追加
  */
 include("./lib/common.php");
 
@@ -60,6 +60,8 @@ else
     //初期表示時
 $name = "";
 $address = "";
+$postcode1 = "";
+$postcode2 = "";
 $other = "";
 include("./lib/view/admin/add.php");
 }

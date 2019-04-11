@@ -49,6 +49,14 @@
 			</td>
 		</tr>
 		<tr>
+			<th>郵便番号</th>
+			<td>
+				<p style="color:red"><?php echo @$error['postcode'] ?></p>
+				<input type="text" name="postcode1" value="<?php echo $postcode1 ?>" size="10">-
+				<input type="text" name="postcode2" value="<?php echo $postcode2 ?>" size="20">
+			</td>
+		</tr>
+		<tr>
 			<th>住所</th>
 			<td>
 				<p style="color:red"><?php echo @$error['address'] ?></p>
