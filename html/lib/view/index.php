@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>トップページ</h1>
-<p>お知らせ</p>
+<p><a href="add.php">スタッフ追加</a></p>
 <table border="1">
 	<tr>
 		<th>ID</th>
