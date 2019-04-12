@@ -20,8 +20,8 @@
 		<td><?php echo $row['id']?></td>
 		<td><?php echo $row['name']?></td>
 		<td><?php echo date('Y/m/d',strtotime($row['birthday'])) ?></td>
-		<td><a href="view.php">参照</a></td>
-		<td><a href="delete.php">削除</a></td>
+		<td><a href="view.php?id=<?php echo $row['id']?>">参照</a></td>
+		<td><a href="delete.php?id=<?php echo $row['id']?>">削除</a></td>
 	</tr>
 <?php } ?>
 </table>
