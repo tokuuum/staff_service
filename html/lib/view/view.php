@@ -39,5 +39,7 @@
 		<td><?php echo nl2br($userdata[0]['other']) ?></td>
 	</tr>
 </table>
+
+<p><a href="edit.php?id=<?php echo $_GET['id'] ?>">修正</a></p>
 </body>
 </html>
