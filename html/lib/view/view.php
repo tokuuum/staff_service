@@ -8,30 +8,35 @@
 <h1>スタッフ参照</h1>
 <p><a href="./">トップページへ戻る</a>
 <table border="1">
-//listでまわす
 	<tr>
 		<th>氏名</th>
-		<td><?php echo $name ?></td>
+		<td><?php echo $userdata[0]['name'] ?></td>
 	</tr>
 	<tr>
 		<th>生年月日</th>
-		<td><?php echo date('Y/m/d',strtotime($birthday)) ?></td>
+		<td><?php echo date('Y/m/d',strtotime($userdata[0]['birthday'])) ?></td>
 	</tr>
 	<tr>
 		<th>性別</th>
-		<td><?php echo $sex ?></td>
+		<td><?php if ($userdata[0]['sex'] == 1) {
+		    echo '男';
+		}else if ($userdata[0]['sex'] == 2) {
+		    echo '女';
+		}else {
+		    echo '不明';
+		}?></td>
 	</tr>
 	<tr>
 		<th>郵便番号</th>
-		<td><?php echo $postcode ?></td>
+		<td><?php echo $userdata[0]['postcode'] ?></td>
 	</tr>
 	<tr>
 		<th>住所</th>
-		<td><?php echo $address ?></td>
+		<td><?php echo $userdata[0]['address'] ?></td>
 	</tr>
 	<tr>
 		<th>備考</th>
-		<td><?php echo nl2br($body) ?></td>
+		<td><?php echo nl2br($userdata[0]['other']) ?></td>
 	</tr>
 </table>
 </body>
