@@ -2,48 +2,57 @@
 /*
  * 管理画面・お知らせ記事編集
  */
-include("lib/common.php");
+include ("lib/common.php");
 $pdo = get_conn();
 
 $mode = get_mode();
 
-//更新ボタン押下時
-if($mode == "edit"){
+// 更新ボタン押下時
+if ($mode == "edit") {
     $id = $_POST['id'];
-    $view_date = $_POST['view_date'];
-    $title = $_POST['title'];
-    $body = $_POST['body'];
+    $name = $_POST['name'];
+    $birthday = str_replace('/', '', $_POST['birthday']);
+    $sex = $_POST['sex'];
+    $postcode = str_replace('-', '', $_POST['postcode']);
+    $address = $_POST['address'];
+    $other = $_POST['other'];
 
-    //入力チェック
+    // 入力チェック
     $error = array();
-    if(!$view_date){
-        $error["view_date"] = "日付を入力してください";
-    }else if(!preg_match("/^\d{4}\/\d{2}\/\d{2}$/",$view_date)){
-        $error["view_date"] = "日付はyyyy/mm/dd形式で入力してください";
+    if (! $name) {
+        $error["name"] = "名前を入力してください";
     }
-    if(!$title){
-        $error["title"] = "タイトルを入力してください";
+    if (! $birthday) {
+        $error["birthday"] = "日付を入力してください";
+    } else if (! preg_match("/^\d{4}\d{2}\d{2}$/", $birthday)) {
+        $error["birthday"] = "日付はyyyy/mm/dd形式で入力してください";
+    }
+    if (! $sex) {
+        $error["sex"] = "性別を選択してください";
     }
 
-    if($error){
-        //エラーがある場合
-        //入力画面に戻ってエラーメッセージを表示
-        include("../lib/view/admin/edit.php");
-    }else{
-        //エラーが無い場合
-        //DB登録して一覧へ遷移する
-        $stmt = $pdo->prepare("update news set view_date = :view_date, title = :title, body = :body where id = :id");
-        $stmt->bindParam(':view_date',$view_date);
-        $stmt->bindParam(':title',$title);
-        $stmt->bindParam(':body',$body);
-        $stmt->bindParam(':id',$id);
+    if ($error) {
+        // エラーがある場合
+        // 入力画面に戻ってエラーメッセージを表示
+        include ("./lib/view/admin/delete.php");
+    } else {
+        // エラーが無い場合
+        // DB登録して一覧へ遷移する
+        $stmt = $pdo->prepare("update member set name = :name, birthday = :birthday, sex = :sex, postcode = :postcode, address = :address, other = :other where id = :id");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':birthday', $birthday);
+        $stmt->bindParam(':sex', $sex);
+        $stmt->bindParam(':postcode', $postcode);
+        $stmt->bindParam(':address', $address);
+        $stmt->bindParam(':other', $other);
+        $stmt->bindParam(':id', $id);
         $stmt->execute();
 
         redirect("./");
     }
 
-    //初期表示時
-}else{
+    // 初期表示時
+} else {
     $id = $_GET['id'];
     $name = "";
     $birthday = "";
@@ -53,9 +62,9 @@ if($mode == "edit"){
     $other = "";
 
     $stmt = $pdo->prepare("select id, name, birthday, sex, postcode, address, other from member where id = :id");
-    $stmt->bindParam(':id',$id);
+    $stmt->bindParam(':id', $id);
     $stmt->execute();
-    if($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+    if ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $name = $result['name'];
         $birthday = $result['birthday'];
         $sex = $result['sex'];
@@ -64,7 +73,7 @@ if($mode == "edit"){
         $other = $result['other'];
     }
 
-    include("lib/view/admin/edit.php");
+    include ("lib/view/admin/edit.php");
 }
 
 ?>
