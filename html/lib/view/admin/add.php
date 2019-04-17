@@ -67,7 +67,7 @@
 			<th>本文</th>
 			<td>
 				<p style="color:red"><?php echo @$error['other'] ?></p>
-				<textarea name="body" cols="50" rows="10"><?php echo $other ?></textarea>
+				<textarea name="other" cols="50" rows="10"><?php echo $other ?></textarea>
 			</td>
 		</tr>
 	</table>

@@ -10,7 +10,6 @@ $stmt = $pdo->prepare('select name, birthday, sex, postcode, address, other from
 $stmt-> bindParam(':id', $id);
 $stmt->execute();
 $userdata = $stmt->fetchAll(PDO::FETCH_ASSOC);
-echo $userdata[0]['name'];
 
 include('./lib/view/view.php');
 ?>

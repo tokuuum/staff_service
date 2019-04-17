@@ -47,7 +47,7 @@ if ($userdata[0]['postcode'] != "0") {
 		</tr>
 		<tr>
 			<th>備考</th>
-			<td><?php echo nl2br($userdata[0]['other']) ?></td>
+			<td><?php echo $userdata[0]['other'] ?></td>
 		</tr>
 	</table>
 

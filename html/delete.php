@@ -8,9 +8,6 @@ $pdo = get_conn();
 $mode = get_mode();
 
 
-echo "MODE：".$mode;
-
-
 if ($mode == "delete") {
     $id = $_POST['id'];
     $stmt = $pdo->prepare("delete from member where id = :id");
@@ -20,6 +17,14 @@ if ($mode == "delete") {
     redirect("./");
 }else{
     $id = $_GET['id'];
+    $name = "";
+    $stmt = $pdo->prepare("select name from member where id = :id");
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    if ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $name = $result['name'];
+    }
     $path = "./lib/view/admin/delete.php";
     include ($path);
 }

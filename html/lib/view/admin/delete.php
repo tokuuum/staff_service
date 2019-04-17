@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h1>削除画面</h1>
-	<p>ID：<?php echo $id?>を削除しますか？</p>
+	<p>「<?php echo $name?>」を削除しますか？</p>
 	<form method="post" action="delete.php">
 		<input type="hidden" name="mode" value="delete">
 		<input type="hidden" name="id" value="<?php echo $id ?>">

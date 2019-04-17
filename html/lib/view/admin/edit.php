@@ -51,8 +51,7 @@
 				<th>郵便番号</th>
 				<td>
 					<p style="color: red"><?php echo @$error['postcode'] ?></p>
-					<input type="text" name="postcode" value="
-					<?php if ($postcode != "0") {
+					<input type="text" name="postcode" value="<?php if ($postcode != "0") {
 					    echo mb_substr($postcode, 0,3).'-'.mb_substr($postcode, 3,4);
 					} ?>"
 					size="30">
@@ -69,8 +68,8 @@
 			<tr>
 				<th>本文</th>
 				<td>
-					<p style="color: red"><?php echo @$error['other'] ?></p> <textarea
-						name="other" cols="50" rows="10"><?php echo $other ?></textarea>
+					<p style="color: red"><?php echo @$error['other'] ?></p>
+					<textarea name="other" cols="50" rows="10"><?php echo $other ?></textarea>
 				</td>
 			</tr>
 		</table>
