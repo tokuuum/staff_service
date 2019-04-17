@@ -25,8 +25,7 @@ if ($mode == "delete") {
     if ($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $name = $result['name'];
     }
-    $path = "./lib/view/admin/delete.php";
-    include ($path);
+    include ("./lib/view/delete.php");
 }
 
 

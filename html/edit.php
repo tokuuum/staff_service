@@ -73,7 +73,7 @@ if ($mode == "edit") {
         $other = $result['other'];
     }
 
-    include ("lib/view/admin/edit.php");
+    include ("lib/view/edit.php");
 }
 
 ?>

@@ -36,7 +36,7 @@ if ($mode == "add") {
         echo "エラーあるよ";
         //エラーがある場合
         //入力画面に戻ってエラーメッセージを表示
-        include("./lib/view/admin/add.php");
+        include("./lib/view/add.php");
     }else{
         echo "エラーなし";
         //エラーが無い場合
@@ -63,6 +63,6 @@ $address = "";
 $postcode1 = "";
 $postcode2 = "";
 $other = "";
-include("./lib/view/admin/add.php");
+include("./lib/view/add.php");
 }
 ?>
