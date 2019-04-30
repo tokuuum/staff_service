@@ -33,6 +33,7 @@ if ($mode == "add") {
     }
 
     if($error){
+        echo "エラーあるよ";
         //エラーがある場合
         //入力画面に戻ってエラーメッセージを表示
         include("./lib/view/add.php");
